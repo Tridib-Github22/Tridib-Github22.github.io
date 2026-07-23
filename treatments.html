@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treatments – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><span>Ping TCM<small>Traditional Chinese Medicine</small></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a><a href="treatments.html" class="active">Treatments</a>
+      <a href="shop.html">Shop</a><a href="about.html">About</a>
+      <a href="appointments.html">Appointments</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartBadge"></span></a>
+      <div id="authNav"><a href="login.html" class="btn btn-primary btn-sm">Sign In</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Our Treatments</h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Treatments</span></div>
+      <p style="color:rgba(255,255,255,.75);margin-top:.75rem;">Comprehensive Traditional Chinese Medicine care for your complete wellbeing</p>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem;" data-animate>
+      <span class="section-label">Evidence-Based TCM</span>
+      <h2 class="section-title">16 Specialized Treatments</h2>
+      <p class="section-subtitle">Each treatment plan is personalized by Dr. Ping He after a thorough diagnostic evaluation, addressing the root cause rather than just symptoms.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card" id="acupuncture" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+        <h3>Acupuncture</h3>
+        <p>Our foundational treatment uses ultra-fine, sterile needles at specific meridian points to restore the body's natural energy flow (Qi). Safe, effective, and recognized by the WHO for over 100 conditions.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="pain" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+        <h3>Pain Management</h3>
+        <p>Acupuncture is one of the most effective natural treatments for chronic and acute pain — back pain, neck pain, arthritis, migraines, sciatica, and fibromyalgia — without medications or side effects.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="infertility" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-baby"></i></div>
+        <h3>Infertility Support</h3>
+        <p>Comprehensive fertility programs integrating acupuncture and herbal medicine for both men and women. Supports natural conception and increases IVF/IUI success rates by improving hormonal balance and uterine health.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Package from $650</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="allergy" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+        <h3>Allergy Treatment</h3>
+        <p>A unique NAET-inspired protocol that desensitizes the immune system to allergens. Provides lasting relief from seasonal pollen, dust, pet dander, and food allergies without antihistamines.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Package from $320</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="respiratory" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-lungs"></i></div>
+        <h3>Respiratory Health</h3>
+        <p>TCM therapies including acupuncture, cupping, and herbal medicine strengthen lung function and reduce inflammation. Effective for asthma, COPD, chronic bronchitis, and sinusitis.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="depression" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Depression &amp; Anxiety</h3>
+        <p>WHO-recognized acupuncture therapy naturally balances neurotransmitters (serotonin, dopamine) to reduce depression, anxiety, and stress. A safe complement to or alternative to pharmaceutical treatments.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Package from $420</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="energy" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-battery-bolt"></i></div>
+        <h3>Low Energy &amp; Fatigue</h3>
+        <p>Specialized protocols for Chronic Fatigue Syndrome (CFS) and general low vitality. TCM identifies and corrects the underlying energy deficiencies through acupuncture, herbal formulas, and dietary guidance.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" id="weight" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-weight-scale"></i></div>
+        <h3>Weight Loss</h3>
+        <p>A holistic TCM approach to sustainable weight loss through appetite regulation, metabolism enhancement, stress reduction, and hormonal balancing — without stimulants or crash diets.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Program from $480</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-shield-heart"></i></div>
+        <h3>PTSD &amp; Trauma</h3>
+        <p>Acupuncture calms the nervous system and reduces hyperarousal associated with PTSD. Research shows significant reduction in PTSD symptoms, nightmares, and emotional dysregulation.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Package from $450</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-person-rays"></i></div>
+        <h3>Hair Loss</h3>
+        <p>TCM addresses hair loss by improving scalp circulation, nourishing the blood and kidneys (which govern hair health in TCM), and reducing stress-related hair thinning and alopecia.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Pregnancy Support</h3>
+        <p>Safe prenatal acupuncture relieves morning sickness, back pain, fatigue, and anxiety during pregnancy. Also supports optimal fetal positioning and prepares the body for labor.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-venus"></i></div>
+        <h3>Menopause</h3>
+        <p>Acupuncture and herbal medicine naturally balance hormones to reduce hot flashes, night sweats, mood swings, insomnia, and other menopausal symptoms — without hormone replacement therapy.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-mars"></i></div>
+        <h3>Male Infertility</h3>
+        <p>Specialized acupuncture and herbal protocols improve sperm count, motility, and morphology. Studies show acupuncture significantly improves sperm quality in men with fertility challenges.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Package from $650</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-star-of-life"></i></div>
+        <h3>Skin Conditions</h3>
+        <p>TCM treats the root causes of eczema, psoriasis, acne, and rosacea by addressing underlying heat, dampness, or blood deficiency patterns. Improves skin from the inside out.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-person-running"></i></div>
+        <h3>Sports Injuries</h3>
+        <p>Accelerate recovery from sports injuries with acupuncture, cupping, and Tui Na massage. Reduces swelling, relieves pain, and promotes faster tissue healing for athletes at all levels.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $95/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-bowl-food"></i></div>
+        <h3>Digestive Health</h3>
+        <p>Effective TCM treatment for IBS, GERD, Crohn's disease, bloating, constipation, and nausea. Restores proper digestive function by harmonizing the stomach and spleen meridians.</p>
+        <div style="font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:.75rem;">Starting from $85/session</div>
+        <a href="appointments.html" class="btn btn-primary btn-sm">Book This Treatment</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Start Your Treatment?</h2>
+    <p>Book a consultation with Dr. Ping He and receive a personalized treatment plan.</p>
+    <div class="cta-actions">
+      <a href="appointments.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-phone"></i> Call 919-491-8983</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="padding-top:1.5rem;">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved. | 5322 NC Hwy 55, Suite 101, Durham, NC 27713</p>
+      <div class="footer-bottom-links">
+        <a href="../index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

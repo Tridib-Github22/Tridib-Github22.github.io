@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info-card { background: var(--green-dark); color: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; }
+    .contact-info-card h3 { color: var(--white); margin-bottom: 1.75rem; }
+    .contact-info-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-info-item .icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(201,168,76,.2); border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold-light); flex-shrink: 0; }
+    .contact-info-item strong { display: block; color: var(--white); font-size: .9rem; margin-bottom: .2rem; }
+    .contact-info-item span, .contact-info-item a { color: rgba(255,255,255,.75); font-size: .875rem; }
+    .contact-info-item a:hover { color: var(--gold-light); }
+    .faq-accordion { margin-top: 1rem; }
+    .faq-item { border: 1px solid var(--grey-200); border-radius: var(--radius-sm); margin-bottom: .5rem; overflow: hidden; }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: .925rem; color: var(--text-dark); background: var(--white); transition: background var(--transition); }
+    .faq-question:hover { background: var(--green-pale); }
+    .faq-question .faq-icon { transition: transform var(--transition); color: var(--green-dark); }
+    .faq-item.open .faq-question { background: var(--green-pale); color: var(--green-dark); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p { padding: 1rem 1.25rem; font-size: .875rem; color: var(--text-mid); border-top: 1px solid var(--grey-100); }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><span>Ping TCM<small>Traditional Chinese Medicine</small></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a><a href="treatments.html">Treatments</a>
+      <a href="shop.html">Shop</a><a href="about.html">About</a>
+      <a href="appointments.html">Appointments</a><a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartBadge"></span></a>
+      <div id="authNav"><a href="login.html" class="btn btn-primary btn-sm">Sign In</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Contact</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Form -->
+      <div>
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title" style="margin-bottom:1.75rem;">Send Us a Message</h2>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="(919) 555-1234" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject *</label>
+            <select id="contactSubject" class="form-control" required>
+              <option value="">Select a subject</option>
+              <option>General Inquiry</option>
+              <option>Book an Appointment</option>
+              <option>Insurance Questions</option>
+              <option>Treatment Information</option>
+              <option>Billing / Payment</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea id="contactMessage" class="form-control" rows="5" placeholder="How can Dr. He help you today?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" id="contactSubmitBtn">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <div class="contact-info-card">
+          <h3><i class="fa-solid fa-location-dot" style="color:var(--gold)"></i> Clinic Information</h3>
+          <div class="contact-info-item">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div><strong>Address</strong><span>5322 NC Hwy 55, Suite 101<br>Durham, NC 27713</span></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon"><i class="fa-solid fa-phone"></i></div>
+            <div><strong>Phone</strong><a href="tel:9194918983">919-491-8983</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><strong>Email</strong><a href="mailto:info@pingtcm.com">info@pingtcm.com</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon"><i class="fa-solid fa-clock"></i></div>
+            <div><strong>Clinic Hours</strong><span>Monday – Friday: 9:00 AM – 6:00 PM<br>Saturday – Sunday: Closed</span></div>
+          </div>
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1)">
+            <a href="appointments.html" class="btn btn-primary" style="width:100%;justify-content:center;">
+              <i class="fa-solid fa-calendar-check"></i> Book Online
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<div style="background:var(--white);padding:0">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.5!2d-78.9!3d35.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s5322+NC+Hwy+55+Suite+101+Durham+NC+27713!5e0!3m2!1sen!2sus!4v1"
+    width="100%" height="400" style="border:0;display:block;" allowfullscreen loading="lazy"
+    title="Ping TCM Clinic Location" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--off-white)">
+  <div class="container" style="max-width:800px;">
+    <div class="text-center" data-animate>
+      <span class="section-label">FAQs</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-accordion" style="margin-top:2rem;">
+      <div class="faq-item">
+        <div class="faq-question">Does acupuncture hurt? <i class="fa-solid fa-plus faq-icon"></i></div>
+        <div class="faq-answer"><p>Most patients feel little to no pain during acupuncture. The needles used are hair-thin — much finer than hypodermic needles. You may feel a slight tingling, warmth, or dull ache at the needle site, which is a positive sign of the treatment working. Most patients find it deeply relaxing.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How many sessions will I need? <i class="fa-solid fa-plus faq-icon"></i></div>
+        <div class="faq-answer"><p>The number of sessions varies by condition and individual response. Acute conditions may resolve in 3–6 sessions, while chronic conditions typically require 8–12 or more. Dr. He will provide a personalized treatment plan after your initial consultation and adjust it based on your progress.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you accept insurance? <i class="fa-solid fa-plus faq-icon"></i></div>
+        <div class="faq-answer"><p>We accept many insurance plans that include acupuncture coverage. Please call us at 919-491-8983 or email info@pingtcm.com to verify your specific coverage before your first appointment. We also offer flexible self-pay rates and treatment packages.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I expect on my first visit? <i class="fa-solid fa-plus faq-icon"></i></div>
+        <div class="faq-answer"><p>Your first visit includes a comprehensive health intake (45–60 minutes) where Dr. He reviews your medical history, current symptoms, and lifestyle factors. He may examine your tongue and pulse — key diagnostic tools in TCM — before creating your personalized treatment plan. The first acupuncture treatment often follows the consultation.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is TCM safe to combine with conventional medicine? <i class="fa-solid fa-plus faq-icon"></i></div>
+        <div class="faq-answer"><p>Yes, in most cases TCM works very well alongside conventional Western medicine. Dr. He will review your current medications and treatments to ensure there are no contraindications. Many patients use TCM to complement their ongoing medical care, often reducing their need for pharmaceuticals over time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="padding-top:1.5rem;">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="../index.html">Home</a><a href="treatments.html">Treatments</a><a href="appointments.html">Book</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const msg = document.getElementById('contactMessage').value.trim();
+    if (!name || !email || !msg) {
+      if (window.Notify) Notify.error('Please fill in all required fields.');
+      return;
+    }
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    setTimeout(() => {
+      if (window.Notify) Notify.success('Message sent! Dr. He\'s team will respond within 24 hours.');
+      this.reset();
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    }, 1200);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

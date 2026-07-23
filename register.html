@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/auth.css" />
+</head>
+<body>
+
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+
+<div class="auth-page">
+  <!-- Left Panel -->
+  <div class="auth-panel-left">
+    <a href="../index.html" class="auth-back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    <div class="auth-brand">
+      <div class="auth-brand-logo"><i class="fa-solid fa-seedling"></i></div>
+      <h2>Join Ping TCM</h2>
+      <p>Create your free account to manage appointments, shop our wellness store, and track your healing journey.</p>
+      <div class="auth-features">
+        <div class="auth-feature">
+          <div class="auth-feature-icon"><i class="fa-solid fa-user-plus"></i></div>
+          <span>Free account — no credit card required</span>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon"><i class="fa-solid fa-calendar-plus"></i></div>
+          <span>Easy online appointment booking</span>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon"><i class="fa-solid fa-gift"></i></div>
+          <span>Exclusive discounts for members</span>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <span>Your health data is secure &amp; private</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="auth-panel-right">
+    <div class="auth-form-wrap" style="max-width:480px;">
+      <h1>Create Account</h1>
+      <p class="auth-subtitle">Fill in your details below to get started.</p>
+
+      <div class="auth-alert error" id="regError" role="alert">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="regErrorMsg">Please fix the errors below.</span>
+      </div>
+      <div class="auth-alert success" id="regSuccess" role="alert">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="regSuccessMsg">Account created! Redirecting...</span>
+      </div>
+
+      <form id="register-form" novalidate>
+        <!-- Name Row -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="regFirstName">First Name *</label>
+            <input type="text" id="regFirstName" name="firstName" class="form-control"
+              placeholder="Jane" autocomplete="given-name" required />
+            <div class="form-error" id="firstNameError"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regLastName">Last Name *</label>
+            <input type="text" id="regLastName" name="lastName" class="form-control"
+              placeholder="Smith" autocomplete="family-name" required />
+            <div class="form-error" id="lastNameError"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="regEmail">Email Address *</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-envelope"></i>
+            <input type="email" id="regEmail" name="email" class="form-control"
+              placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <div class="form-error" id="regEmailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="regPhone">Phone Number *</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-phone"></i>
+            <input type="tel" id="regPhone" name="phone" class="form-control"
+              placeholder="(919) 555-1234" autocomplete="tel" required />
+          </div>
+          <div class="form-error" id="regPhoneError"></div>
+        </div>
+
+        <!-- Password Row -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Password *</label>
+            <div class="input-icon-wrap">
+              <i class="input-icon fa-solid fa-lock"></i>
+              <input type="password" id="regPassword" name="password" class="form-control"
+                placeholder="Min 8 characters" autocomplete="new-password" required />
+              <button type="button" class="toggle-pass" id="toggleRegPass" aria-label="Toggle password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div class="pw-strength" id="pwStrength" style="display:none;">
+              <div class="pw-strength-bar"><div class="pw-strength-fill" id="pwFill"></div></div>
+              <span class="pw-strength-label" id="pwLabel"></span>
+            </div>
+            <div class="form-error" id="regPasswordError"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regConfirm">Confirm Password *</label>
+            <div class="input-icon-wrap">
+              <i class="input-icon fa-solid fa-lock"></i>
+              <input type="password" id="regConfirm" name="confirmPassword" class="form-control"
+                placeholder="Repeat password" autocomplete="new-password" required />
+            </div>
+            <div class="form-error" id="regConfirmError"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="regDob">Date of Birth <span style="color:var(--text-light);font-weight:400;">(optional)</span></label>
+          <input type="date" id="regDob" name="dob" class="form-control" />
+        </div>
+
+        <!-- Role Selector -->
+        <div class="form-group">
+          <label class="form-label">Account Type *</label>
+          <div class="role-selector">
+            <label class="role-card selected" id="roleUserCard">
+              <input type="radio" name="role" value="user" checked />
+              <div class="role-card-icon"><i class="fa-solid fa-user"></i></div>
+              <div class="role-card-title">Patient</div>
+              <div class="role-card-desc">Book appointments &amp; shop</div>
+            </label>
+            <label class="role-card" id="roleSuperCard">
+              <input type="radio" name="role" value="superuser" />
+              <div class="role-card-icon"><i class="fa-solid fa-user-nurse"></i></div>
+              <div class="role-card-title">Staff / Practitioner</div>
+              <div class="role-card-desc">Manage appointments &amp; orders</div>
+            </label>
+          </div>
+          <div class="form-error" id="regRoleError"></div>
+        </div>
+
+        <!-- Terms -->
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="regTerms" name="terms" required />
+            I agree to the <a href="#" style="color:var(--green-mid)">Terms of Service</a> and <a href="#" style="color:var(--green-mid)">Privacy Policy</a>
+          </label>
+          <div class="form-error" id="regTermsError"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:.85rem;" id="registerBtn">
+          <i class="fa-solid fa-user-plus"></i> Create Account
+        </button>
+      </form>
+
+      <p class="auth-footer-text">
+        Already have an account? <a href="login.html">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+  // Password visibility toggle
+  document.getElementById('toggleRegPass').addEventListener('click', function () {
+    const inp = document.getElementById('regPassword');
+    const icon = this.querySelector('i');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    icon.className = inp.type === 'text' ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+  });
+
+  // Password strength indicator
+  document.getElementById('regPassword').addEventListener('input', function () {
+    const val = this.value;
+    const wrap = document.getElementById('pwStrength');
+    const fill = document.getElementById('pwFill');
+    const label = document.getElementById('pwLabel');
+    if (!val) { wrap.style.display = 'none'; return; }
+    wrap.style.display = 'block';
+    const hasUpper = /[A-Z]/.test(val);
+    const hasNum   = /[0-9]/.test(val);
+    const hasSpec  = /[^A-Za-z0-9]/.test(val);
+    const long     = val.length >= 10;
+    const score    = [val.length >= 8, hasUpper, hasNum, hasSpec, long].filter(Boolean).length;
+    if (score <= 2) { fill.className = 'pw-strength-fill weak';   label.textContent = 'Weak'; }
+    else if (score <= 3) { fill.className = 'pw-strength-fill fair'; label.textContent = 'Fair'; }
+    else { fill.className = 'pw-strength-fill strong'; label.textContent = 'Strong'; }
+  });
+
+  // Role card selection
+  document.querySelectorAll('.role-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+</script>
+</body>
+</html>
