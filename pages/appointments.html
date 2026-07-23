@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <style>
+    .appt-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+    .info-card { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--grey-100); padding: 1.75rem; margin-bottom: 1.5rem; }
+    .info-card h4 { color: var(--green-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: .6rem; }
+    .info-row { display: flex; align-items: flex-start; gap: .75rem; margin-bottom: .85rem; font-size: .875rem; }
+    .info-row i { color: var(--green-dark); width: 16px; margin-top: .15rem; flex-shrink: 0; }
+    .confirm-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+    .confirm-modal.open { display: flex; }
+    .confirm-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; max-width: 480px; width: 100%; text-align: center; }
+    .confirm-card .confirm-icon { font-size: 3.5rem; color: var(--success); margin-bottom: 1rem; }
+    @media (max-width: 768px) { .appt-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><span>Ping TCM<small>Traditional Chinese Medicine</small></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a><a href="treatments.html">Treatments</a>
+      <a href="shop.html">Shop</a><a href="about.html">About</a>
+      <a href="appointments.html" class="active">Appointments</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartBadge"></span></a>
+      <div id="authNav"><a href="login.html" class="btn btn-primary btn-sm">Sign In</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Book an Appointment</h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Appointments</span></div>
+      <p style="color:rgba(255,255,255,.75);margin-top:.75rem;">Schedule your visit with Dr. Ping He</p>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+
+    <!-- Online Portal CTA -->
+    <div style="background:var(--green-dark);border-radius:var(--radius-md);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;">
+      <div style="color:var(--white);">
+        <strong style="font-size:1rem;">Prefer instant online booking?</strong>
+        <p style="color:rgba(255,255,255,.75);font-size:.875rem;margin-top:.2rem;">Use our official booking portal for real-time availability and instant confirmation.</p>
+      </div>
+      <a href="https://pingtcm.acubliss.app/portal/booking/ping-he/durham/" target="_blank" class="btn btn-primary">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Book Online via Portal
+      </a>
+    </div>
+
+    <div class="appt-grid">
+      <!-- Booking Form -->
+      <div>
+        <span class="section-label">Request an Appointment</span>
+        <h2 class="section-title" style="margin-bottom:1.75rem;">Schedule Your Visit</h2>
+        <form id="apptForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name *</label>
+              <input type="text" id="apptFirstName" class="form-control" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name *</label>
+              <input type="text" id="apptLastName" class="form-control" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" id="apptEmail" class="form-control" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" id="apptPhone" class="form-control" placeholder="(919) 555-1234" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Treatment *</label>
+            <select id="apptTreatment" class="form-control" required>
+              <option value="">Select a treatment</option>
+              <optgroup label="Acupuncture Treatments">
+                <option>Acupuncture (General)</option>
+                <option>Pain Management</option>
+                <option>Infertility – Female</option>
+                <option>Infertility – Male</option>
+                <option>Allergy Treatment</option>
+                <option>Respiratory Health</option>
+                <option>Depression &amp; Anxiety</option>
+                <option>Low Energy / Chronic Fatigue</option>
+                <option>Weight Loss Program</option>
+                <option>PTSD &amp; Trauma</option>
+                <option>Hair Loss</option>
+                <option>Pregnancy Support</option>
+                <option>Menopause</option>
+                <option>Skin Conditions</option>
+                <option>Sports Injuries</option>
+                <option>Digestive Health</option>
+              </optgroup>
+              <optgroup label="Consultations">
+                <option>Initial Consultation (New Patient)</option>
+                <option>Herbal Medicine Consultation</option>
+                <option>Follow-up Visit</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Preferred Date *</label>
+              <input type="date" id="apptDate" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Time *</label>
+              <select id="apptTime" class="form-control" required>
+                <option value="">Select time</option>
+                <option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+                <option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option>
+                <option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Insurance Provider</label>
+            <select id="apptInsurance" class="form-control">
+              <option value="">Self-pay / Not sure</option>
+              <option>Blue Cross Blue Shield</option><option>Aetna</option><option>United Healthcare</option>
+              <option>Cigna</option><option>Humana</option><option>Medicare</option>
+              <option>Medicaid</option><option>Other (please specify in notes)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Additional Notes</label>
+            <textarea id="apptNotes" class="form-control" rows="4" placeholder="Describe your main health concerns, any relevant medical history, or questions for Dr. He..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" id="apptSubmitBtn">
+            <i class="fa-solid fa-calendar-check"></i> Request Appointment
+          </button>
+          <p style="font-size:.8rem;color:var(--text-light);text-align:center;margin-top:.75rem;">
+            Dr. He's team will confirm your appointment within 24 hours.
+          </p>
+        </form>
+      </div>
+
+      <!-- Info Sidebar -->
+      <div>
+        <div class="info-card">
+          <h4><i class="fa-solid fa-circle-info"></i> What to Expect</h4>
+          <div class="info-row"><i class="fa-solid fa-1"></i><span><strong>Initial Consultation (45–60 min):</strong> Dr. He reviews your full health history, examines your tongue and pulse, and creates your personalized treatment plan.</span></div>
+          <div class="info-row"><i class="fa-solid fa-2"></i><span><strong>First Treatment:</strong> Often performed after the consultation. Needles are retained for 20–40 minutes. Most patients feel deeply relaxed.</span></div>
+          <div class="info-row"><i class="fa-solid fa-3"></i><span><strong>Follow-up Visits (45 min):</strong> Treatment progress is reviewed and the plan is adjusted as needed for optimal results.</span></div>
+        </div>
+
+        <div class="info-card">
+          <h4><i class="fa-solid fa-clock"></i> Clinic Hours</h4>
+          <div class="info-row"><i class="fa-solid fa-calendar-days"></i><span><strong>Monday – Friday:</strong> 9:00 AM – 6:00 PM</span></div>
+          <div class="info-row"><i class="fa-solid fa-calendar-xmark"></i><span><strong>Saturday – Sunday:</strong> Closed</span></div>
+          <div class="info-row"><i class="fa-solid fa-phone"></i><span><a href="tel:9194918983" style="color:var(--green-mid)">919-491-8983</a> for same-day availability</span></div>
+        </div>
+
+        <div class="info-card">
+          <h4><i class="fa-solid fa-rotate-left"></i> Cancellation Policy</h4>
+          <p style="font-size:.875rem;color:var(--text-mid);line-height:1.7;">Please provide at least <strong>24 hours notice</strong> if you need to cancel or reschedule your appointment. Late cancellations or no-shows may be subject to a fee. We understand emergencies happen — please call us as soon as possible.</p>
+        </div>
+
+        <div class="info-card">
+          <h4><i class="fa-solid fa-shield-heart"></i> Insurance &amp; Payment</h4>
+          <p style="font-size:.875rem;color:var(--text-mid);line-height:1.7;margin-bottom:.75rem;">We accept most major insurance plans that cover acupuncture. We also welcome self-pay patients with transparent pricing and package discounts.</p>
+          <p style="font-size:.8rem;color:var(--text-light);">Accepted: BCBS, Aetna, United, Cigna, Humana, Medicare. Call to verify your coverage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Confirmation Modal -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-card">
+    <div class="confirm-icon"><i class="fa-solid fa-calendar-check"></i></div>
+    <h2 style="color:var(--green-dark);margin-bottom:.5rem;">Request Received!</h2>
+    <p style="color:var(--text-light);margin-bottom:1rem;">Thank you, <strong id="confirmName"></strong>!</p>
+    <p style="font-size:.9rem;color:var(--text-mid);margin-bottom:.5rem;">
+      Your appointment request for <strong id="confirmTreatment"></strong> on <strong id="confirmDate"></strong> at <strong id="confirmTime"></strong> has been received.
+    </p>
+    <p style="font-size:.875rem;color:var(--text-light);margin-bottom:2rem;">Dr. He's team will confirm your appointment within 24 hours via email or phone.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-secondary" onclick="document.getElementById('confirmModal').classList.remove('open')">Close</button>
+      <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="padding-top:1.5rem;">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved. | 919-491-8983</p>
+      <div class="footer-bottom-links"><a href="../index.html">Home</a><a href="treatments.html">Treatments</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+  // Set min date to today
+  const dateInput = document.getElementById('apptDate');
+  const today = new Date();
+  dateInput.min = today.toISOString().split('T')[0];
+  // Disable weekends
+  dateInput.addEventListener('input', () => {
+    const d = new Date(dateInput.value);
+    const day = d.getUTCDay();
+    if (day === 0 || day === 6) {
+      if (window.Notify) Notify.warning('We are closed on weekends. Please select a weekday.');
+      dateInput.value = '';
+    }
+  });
+
+  // Pre-fill if logged in
+  document.addEventListener('DOMContentLoaded', () => {
+    const user = window.Auth ? Auth.getCurrentUser() : null;
+    if (user) {
+      document.getElementById('apptFirstName').value = user.firstName || '';
+      document.getElementById('apptLastName').value  = user.lastName  || '';
+      document.getElementById('apptEmail').value     = user.email     || '';
+      document.getElementById('apptPhone').value     = user.phone     || '';
+    }
+  });
+
+  // Form submit
+  document.getElementById('apptForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fn        = document.getElementById('apptFirstName').value.trim();
+    const ln        = document.getElementById('apptLastName').value.trim();
+    const email     = document.getElementById('apptEmail').value.trim();
+    const phone     = document.getElementById('apptPhone').value.trim();
+    const treatment = document.getElementById('apptTreatment').value;
+    const date      = document.getElementById('apptDate').value;
+    const time      = document.getElementById('apptTime').value;
+    if (!fn || !ln || !email || !phone || !treatment || !date || !time) {
+      if (window.Notify) Notify.error('Please fill in all required fields.');
+      return;
+    }
+    const btn = document.getElementById('apptSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+    setTimeout(() => {
+      // Save appointment
+      const appts = JSON.parse(localStorage.getItem('ptcm_appointments') || '[]');
+      appts.push({ id: 'APT-' + Date.now(), patient: `${fn} ${ln}`, email, phone, treatment, date, time,
+        status: 'scheduled', notes: document.getElementById('apptNotes').value, createdAt: new Date().toISOString() });
+      localStorage.setItem('ptcm_appointments', JSON.stringify(appts));
+      // Show modal
+      document.getElementById('confirmName').textContent = `${fn} ${ln}`;
+      document.getElementById('confirmTreatment').textContent = treatment;
+      document.getElementById('confirmDate').textContent = new Date(date + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+      document.getElementById('confirmTime').textContent = time;
+      document.getElementById('confirmModal').classList.add('open');
+      this.reset();
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-calendar-check"></i> Request Appointment';
+    }, 1000);
+  });
+</script>
+</body>
+</html>

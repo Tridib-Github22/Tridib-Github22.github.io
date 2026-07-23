@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/shop.css" />
+</head>
+<body>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+      <span>Ping TCM<small>Traditional Chinese Medicine</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a>
+      <a href="treatments.html">Treatments</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartBadge"></span></a>
+      <div id="authNav"><a href="login.html" class="btn btn-primary btn-sm">Sign In</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Checkout</h1>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i>
+        <a href="shop.html">Shop</a><i class="fa-solid fa-chevron-right"></i>
+        <a href="cart.html">Cart</a><i class="fa-solid fa-chevron-right"></i>
+        <span>Checkout</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="checkout-layout">
+    <!-- Steps Form -->
+    <div>
+      <!-- Progress -->
+      <div class="checkout-steps" id="checkoutSteps">
+        <div class="checkout-step active" id="step1indicator">
+          <div class="step-num">1</div>
+          <div class="step-label">Contact Info</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="checkout-step" id="step2indicator">
+          <div class="step-num">2</div>
+          <div class="step-label">Scheduling</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="checkout-step" id="step3indicator">
+          <div class="step-num">3</div>
+          <div class="step-label">Payment</div>
+        </div>
+      </div>
+
+      <!-- Step 1: Contact Info -->
+      <div class="checkout-form-section active" id="checkoutStep1">
+        <h3><i class="fa-solid fa-user"></i> Contact Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" id="coFirstName" class="form-control" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input type="text" id="coLastName" class="form-control" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" id="coEmail" class="form-control" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" id="coPhone" class="form-control" placeholder="(919) 555-1234" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Order Notes <span style="font-weight:400;color:var(--text-light)">(optional)</span></label>
+          <textarea id="coNotes" class="form-control" rows="3" placeholder="Any special requests or health notes for Dr. He..."></textarea>
+        </div>
+        <div class="form-actions">
+          <a href="cart.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Cart</a>
+          <button class="btn btn-primary" id="toStep2Btn">Continue <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 2: Scheduling / Delivery -->
+      <div class="checkout-form-section" id="checkoutStep2">
+        <h3><i class="fa-solid fa-calendar"></i> Scheduling &amp; Delivery</h3>
+        <div class="form-group">
+          <label class="form-label">Preferred Appointment Date *</label>
+          <input type="date" id="coDate" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Preferred Time *</label>
+          <select id="coTime" class="form-control" required>
+            <option value="">Select a time</option>
+            <option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+            <option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option>
+            <option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Delivery Address <span style="font-weight:400;color:var(--text-light)">(for physical products)</span></label>
+          <input type="text" id="coAddress" class="form-control" placeholder="Street address" />
+          <div class="form-row" style="margin-top:.5rem;">
+            <input type="text" id="coCity" class="form-control" placeholder="City" />
+            <input type="text" id="coZip" class="form-control" placeholder="ZIP Code" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="backToStep1Btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+          <button class="btn btn-primary" id="toStep3Btn">Continue <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Payment -->
+      <div class="checkout-form-section" id="checkoutStep3">
+        <h3><i class="fa-solid fa-credit-card"></i> Payment Information</h3>
+        <div class="payment-icons">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="Amex"></i>
+          <i class="fa-brands fa-paypal" title="PayPal"></i>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cardholder Name *</label>
+          <input type="text" id="coCardName" class="form-control" placeholder="Jane Smith" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Card Number *</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-credit-card"></i>
+            <input type="text" id="coCardNum" class="form-control" placeholder="4242 4242 4242 4242" maxlength="19" style="padding-left:2.6rem;" />
+          </div>
+        </div>
+        <div class="card-field-row">
+          <div class="form-group">
+            <label class="form-label">Expiry Date *</label>
+            <input type="text" id="coExpiry" class="form-control" placeholder="MM / YY" maxlength="7" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">CVV *</label>
+            <input type="text" id="coCvv" class="form-control" placeholder="123" maxlength="4" />
+          </div>
+        </div>
+        <div style="background:var(--green-pale);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.8rem;color:var(--green-dark);margin-bottom:1rem;">
+          <i class="fa-solid fa-shield-check"></i> This is a demo — no real payment is processed. Your data is not transmitted.
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="backToStep2Btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+          <button class="btn btn-primary btn-lg" id="placeOrderBtn"><i class="fa-solid fa-lock"></i> Place Order</button>
+        </div>
+      </div>
+
+      <!-- Order Success -->
+      <div class="checkout-form-section" id="checkoutSuccess">
+        <div class="order-success">
+          <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h2>Order Placed Successfully!</h2>
+          <p class="order-number">Your order number: <strong id="orderNumber">#TCM-00001</strong></p>
+          <p style="color:var(--text-light);max-width:440px;margin:0 auto 2rem;">
+            Thank you for your order. Dr. He's team will contact you within 24 hours to confirm your appointment. Check your email for a confirmation.
+          </p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="shop.html" class="btn btn-secondary">Continue Shopping</a>
+            <a href="dashboard.html" class="btn btn-primary">View My Orders</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <div class="cart-summary-card" id="coSummary">
+      <h3><i class="fa-solid fa-receipt"></i> Order Summary</h3>
+      <div id="coItemsList" style="margin-bottom:1rem;font-size:.875rem;"></div>
+      <div class="summary-row"><span>Subtotal</span><span id="coSubtotal">$0.00</span></div>
+      <div class="summary-row discount" id="coDiscountRow" style="display:none;"><span>Discount</span><span id="coDiscount"></span></div>
+      <div class="summary-row"><span>Tax (7%)</span><span id="coTax">$0.00</span></div>
+      <div class="summary-row total"><span>Total</span><span id="coTotal">$0.00</span></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" style="margin-top:3rem;">
+  <div class="container">
+    <div class="footer-bottom" style="padding-top:1.5rem;">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/shop.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Pre-fill from session if logged in
+    const user = window.Auth ? Auth.getCurrentUser() : null;
+    if (user) {
+      if (document.getElementById('coFirstName')) document.getElementById('coFirstName').value = user.firstName || '';
+      if (document.getElementById('coLastName'))  document.getElementById('coLastName').value  = user.lastName  || '';
+      if (document.getElementById('coEmail'))     document.getElementById('coEmail').value     = user.email     || '';
+      if (document.getElementById('coPhone'))     document.getElementById('coPhone').value     = user.phone     || '';
+    }
+
+    // Populate summary
+    function updateSummary() {
+      const items = JSON.parse(localStorage.getItem('ptcm_cart') || '[]');
+      const coupon = JSON.parse(sessionStorage.getItem('ptcm_coupon') || 'null');
+      const list = document.getElementById('coItemsList');
+      let sub = 0;
+      list.innerHTML = items.map(i => {
+        sub += i.price * i.qty;
+        return `<div style="display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--grey-100)"><span>${i.name} x${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`;
+      }).join('') || '<p style="color:var(--text-light);text-align:center">Cart is empty</p>';
+      const disc = coupon ? sub * coupon.rate : 0;
+      const tax  = (sub - disc) * 0.07;
+      const total = sub - disc + tax;
+      document.getElementById('coSubtotal').textContent = `$${sub.toFixed(2)}`;
+      document.getElementById('coTax').textContent      = `$${tax.toFixed(2)}`;
+      document.getElementById('coTotal').textContent    = `$${total.toFixed(2)}`;
+      if (disc > 0) {
+        document.getElementById('coDiscountRow').style.display = 'flex';
+        document.getElementById('coDiscount').textContent = `-$${disc.toFixed(2)}`;
+      }
+    }
+    updateSummary();
+
+    // Step navigation
+    function setStep(n) {
+      [1,2,3,'Success'].forEach(s => {
+        const sec = document.getElementById(`checkoutStep${s}`);
+        if (sec) { sec.classList.remove('active'); }
+        const ind = document.getElementById(`step${s}indicator`);
+        if (ind) ind.classList.remove('active','done');
+      });
+      const sec = document.getElementById(n === 4 ? 'checkoutSuccess' : `checkoutStep${n}`);
+      if (sec) sec.classList.add('active');
+      for (let i = 1; i < n && i <= 3; i++) {
+        const ind = document.getElementById(`step${i}indicator`);
+        if (ind) ind.classList.add('done');
+      }
+      if (n <= 3) {
+        const ind = document.getElementById(`step${n}indicator`);
+        if (ind) ind.classList.add('active');
+      }
+    }
+
+    document.getElementById('toStep2Btn').addEventListener('click', () => {
+      const fn = document.getElementById('coFirstName').value.trim();
+      const em = document.getElementById('coEmail').value.trim();
+      if (!fn || !em) { if(window.Notify) Notify.error('Please fill in all required fields.'); return; }
+      setStep(2);
+    });
+    document.getElementById('backToStep1Btn').addEventListener('click', () => setStep(1));
+    document.getElementById('toStep3Btn').addEventListener('click', () => {
+      const dt = document.getElementById('coDate').value;
+      const tm = document.getElementById('coTime').value;
+      if (!dt || !tm) { if(window.Notify) Notify.error('Please select a date and time.'); return; }
+      setStep(3);
+    });
+    document.getElementById('backToStep2Btn').addEventListener('click', () => setStep(2));
+    document.getElementById('placeOrderBtn').addEventListener('click', () => {
+      const cn = document.getElementById('coCardNum').value.trim();
+      if (!cn) { if(window.Notify) Notify.error('Please enter card details.'); return; }
+      // Create order
+      const items = JSON.parse(localStorage.getItem('ptcm_cart') || '[]');
+      const orders = JSON.parse(localStorage.getItem('ptcm_orders') || '[]');
+      const orderId = 'TCM-' + String(orders.length + 1).padStart(5,'0');
+      orders.push({ id: orderId, date: new Date().toISOString(), items, status: 'processing',
+        customer: { name: document.getElementById('coFirstName').value + ' ' + document.getElementById('coLastName').value,
+          email: document.getElementById('coEmail').value } });
+      localStorage.setItem('ptcm_orders', JSON.stringify(orders));
+      localStorage.removeItem('ptcm_cart');
+      sessionStorage.removeItem('ptcm_coupon');
+      document.getElementById('orderNumber').textContent = '#' + orderId;
+      setStep(4);
+      if(window.App) App.updateCartBadge();
+    });
+
+    // Card number formatting
+    document.getElementById('coCardNum').addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19);
+    });
+    document.getElementById('coExpiry').addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g,'').replace(/^(\d{2})(\d)/,'$1 / $2').slice(0,7);
+    });
+  });
+</script>
+</body>
+</html>

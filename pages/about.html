@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><span>Ping TCM<small>Traditional Chinese Medicine</small></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a><a href="treatments.html">Treatments</a>
+      <a href="shop.html">Shop</a><a href="about.html" class="active">About</a>
+      <a href="appointments.html">Appointments</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartBadge"></span></a>
+      <div id="authNav"><a href="login.html" class="btn btn-primary btn-sm">Sign In</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="page-hero">
+    <div class="container">
+      <h1>About Ping TCM</h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>About</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Our Story -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap" data-animate>
+        <div class="doctor-img-placeholder" style="padding:0;overflow:hidden;background:none;">
+          <img src="../images/Dr.Ping-He-TCM.jpg"
+               alt="Dr. Ping He – Licensed Acupuncturist, Ping TCM Durham NC"
+               style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius-lg);" />
+          <div class="doctor-badge"><strong>15+</strong><span>Years Experience</span></div>
+        </div>
+      </div>
+      <div class="about-content" data-animate>
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Dr. Ping He, L.Ac., Dipl. O.M.</h2>
+        <p>Dr. Ping He is the founder and lead practitioner of Ping TCM Clinic, the Raleigh-Durham area's premier Traditional Chinese Medicine center. His dual education — grounded in both Eastern and Western medical traditions — gives him a uniquely comprehensive approach to patient care.</p>
+        <br />
+        <p>Dr. He earned his medical degree from the <strong>Beijing University of Traditional Chinese Medicine</strong>, one of China's most prestigious TCM institutions, and further completed his training at the <strong>Florida College of Integrative Medicine</strong> in the United States. He is nationally certified as a <strong>"Diplomat in Oriental Medicine"</strong> by the NCCAOM and fully licensed by the state of North Carolina.</p>
+        <br />
+        <p>Before moving to the United States, Dr. He owned and operated his own TCM clinic in China and served as a physician assistant in the surgical department of the Tenth People's Hospital in Sichuan Province, bringing rich clinical experience across both traditional and biomedical settings.</p>
+        <div class="credentials">
+          <span class="credential-tag"><i class="fa-solid fa-graduation-cap"></i> Beijing University of TCM</span>
+          <span class="credential-tag"><i class="fa-solid fa-graduation-cap"></i> Florida College of Integrative Medicine</span>
+          <span class="credential-tag"><i class="fa-solid fa-certificate"></i> Diplomat in Oriental Medicine</span>
+          <span class="credential-tag"><i class="fa-solid fa-id-badge"></i> NC State Licensed</span>
+          <span class="credential-tag"><i class="fa-solid fa-star"></i> NCCAOM Certified</span>
+          <span class="credential-tag"><i class="fa-solid fa-hospital"></i> Former Hospital Physician</span>
+        </div>
+        <a href="appointments.html" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Book with Dr. He</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="text-center" data-animate>
+      <span class="section-label">Our Approach</span>
+      <h2 class="section-title">Three Pillars of Our Practice</h2>
+    </div>
+    <div class="grid-3" style="margin-top:2.5rem;">
+      <div class="service-card text-center" data-animate>
+        <div class="service-icon" style="margin:0 auto 1.25rem;"><i class="fa-solid fa-yin-yang"></i></div>
+        <h3>Holistic Healing</h3>
+        <p>We treat the whole person — body, mind, and spirit — not just isolated symptoms. Every treatment plan considers your unique constitution, lifestyle, and health history to restore true balance.</p>
+      </div>
+      <div class="service-card text-center" data-animate>
+        <div class="service-icon" style="margin:0 auto 1.25rem;"><i class="fa-solid fa-microscope"></i></div>
+        <h3>Evidence-Based Practice</h3>
+        <p>Dr. He integrates thousands of years of TCM wisdom with modern clinical research. Our protocols are backed by WHO recognition and peer-reviewed studies demonstrating measurable outcomes.</p>
+      </div>
+      <div class="service-card text-center" data-animate>
+        <div class="service-icon" style="margin:0 auto 1.25rem;"><i class="fa-solid fa-heart"></i></div>
+        <h3>Compassionate Care</h3>
+        <p>Every patient receives Dr. He's full attention and a personalized treatment plan. We take time to truly understand your concerns and partner with you throughout your healing journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clinic Features -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="text-center" data-animate>
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">The Ping TCM Difference</h2>
+    </div>
+    <div class="grid-4" style="margin-top:2.5rem;">
+      <div class="text-center" data-animate>
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;color:var(--green-dark)">
+          <i class="fa-solid fa-shield-heart"></i>
+        </div>
+        <h4 style="color:var(--green-dark);margin-bottom:.5rem;">Safe &amp; Sterile</h4>
+        <p style="font-size:.875rem;">Single-use, FDA-approved sterile needles. Strict hygiene protocols for every session.</p>
+      </div>
+      <div class="text-center" data-animate>
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;color:var(--green-dark)">
+          <i class="fa-solid fa-user-doctor"></i>
+        </div>
+        <h4 style="color:var(--green-dark);margin-bottom:.5rem;">One-on-One Care</h4>
+        <p style="font-size:.875rem;">Dr. He personally conducts every consultation and treatment session.</p>
+      </div>
+      <div class="text-center" data-animate>
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;color:var(--green-dark)">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <h4 style="color:var(--green-dark);margin-bottom:.5rem;">Relaxing Environment</h4>
+        <p style="font-size:.875rem;">Modern, calming clinic designed to support healing and deep relaxation.</p>
+      </div>
+      <div class="text-center" data-animate>
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;color:var(--green-dark)">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <h4 style="color:var(--green-dark);margin-bottom:.5rem;">Premium Herbs</h4>
+        <p style="font-size:.875rem;">High-quality, tested herbal medicines sourced from certified suppliers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Experience the Ping TCM Difference</h2>
+    <p>Join hundreds of patients who have transformed their health with Dr. Ping He's expert care.</p>
+    <div class="cta-actions">
+      <a href="appointments.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-phone"></i> Call 919-491-8983</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="padding-top:1.5rem;">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved. | 5322 NC Hwy 55, Suite 101, Durham, NC 27713</p>
+      <div class="footer-bottom-links"><a href="../index.html">Home</a><a href="treatments.html">Treatments</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

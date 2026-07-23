@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard – Ping TCM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+</head>
+<body data-require-auth="true">
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+
+<div class="dashboard-shell">
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+        <span>Ping TCM</span>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle"><i class="fa-solid fa-chevron-left"></i></button>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" id="sidebarAvatar">?</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name" id="sidebarName">Loading...</div>
+        <div class="sidebar-user-role" id="sidebarRole">user</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-group">
+        <div class="sidebar-nav-label">Main</div>
+        <button class="sidebar-link active" data-section="overview"><i class="fa-solid fa-gauge"></i> Dashboard</button>
+        <button class="sidebar-link" data-section="appointments"><i class="fa-solid fa-calendar-check"></i> My Appointments</button>
+        <button class="sidebar-link" data-section="orders"><i class="fa-solid fa-box"></i> Order History</button>
+      </div>
+      <div class="sidebar-nav-group">
+        <div class="sidebar-nav-label">Health</div>
+        <button class="sidebar-link" data-section="profile"><i class="fa-solid fa-file-medical"></i> Health Profile</button>
+        <button class="sidebar-link" data-section="settings"><i class="fa-solid fa-gear"></i> Settings</button>
+      </div>
+      <div class="sidebar-nav-group" id="staffNavGroup" style="display:none;">
+        <div class="sidebar-nav-label">Staff</div>
+        <button class="sidebar-link" data-section="schedule"><i class="fa-solid fa-calendar-days"></i> Staff Schedule</button>
+        <button class="sidebar-link" data-section="patients"><i class="fa-solid fa-users"></i> Patient List</button>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-link" id="dashLogoutBtn" style="color:rgba(255,100,100,.8)">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="dash-main" id="dashMain">
+    <header class="dash-topbar">
+      <div class="topbar-left">
+        <button class="topbar-menu-btn" id="topbarMenuBtn"><i class="fa-solid fa-bars"></i></button>
+        <div class="topbar-title" id="topbarTitle">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-btn" title="Notifications"><i class="fa-solid fa-bell"></i><div class="notif-dot"></div></button>
+        <div class="dropdown">
+          <div class="topbar-user">
+            <div class="sidebar-user-avatar" id="topbarAvatar" style="width:32px;height:32px;font-size:.8rem;">?</div>
+            <span class="topbar-user-name" id="topbarName">User</span>
+            <span class="topbar-role-badge user" id="topbarRole">user</span>
+          </div>
+          <div class="dropdown-menu">
+            <button onclick="document.querySelector('[data-section=settings]').click()"><i class="fa-solid fa-gear"></i> Settings</button>
+            <div class="divider"></div>
+            <button id="topbarLogout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <!-- Overview -->
+      <div class="dash-section active" id="section-overview">
+        <div class="welcome-card">
+          <div>
+            <h2>Welcome back, <span id="welcomeName">Patient</span>! 👋</h2>
+            <p>Here's a summary of your health journey at Ping TCM.</p>
+          </div>
+          <a href="appointments.html" class="btn btn-white"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</a>
+        </div>
+        <div class="stat-cards-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon green"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="stat-card-body">
+              <div class="stat-card-value" id="statUpcoming">0</div>
+              <div class="stat-card-label">Upcoming Appointments</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon gold"><i class="fa-solid fa-box"></i></div>
+            <div class="stat-card-body">
+              <div class="stat-card-value" id="statOrders">0</div>
+              <div class="stat-card-label">Total Orders</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon blue"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-card-body">
+              <div class="stat-card-value" id="statCompleted">0</div>
+              <div class="stat-card-label">Treatments Completed</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon purple"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="stat-card-body">
+              <div class="stat-card-value" id="statMemberSince">—</div>
+              <div class="stat-card-label">Member Since</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+          <a href="appointments.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</a>
+          <a href="shop.html" class="btn btn-secondary"><i class="fa-solid fa-store"></i> Shop</a>
+          <a href="contact.html" class="btn btn-secondary"><i class="fa-solid fa-phone"></i> Contact Clinic</a>
+        </div>
+
+        <!-- Recent Appointments -->
+        <div class="data-table-wrap" style="margin-bottom:1.5rem;">
+          <div class="data-table-header">
+            <h3>Recent Appointments</h3>
+            <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-section=appointments]').click()">View All</button>
+          </div>
+          <div id="recentAppointments" style="padding:1rem;">
+            <p style="color:var(--text-light);text-align:center;padding:2rem;">No appointments yet. <a href="appointments.html" style="color:var(--green-mid)">Book your first appointment!</a></p>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="data-table-wrap">
+          <div class="data-table-header">
+            <h3>Recent Orders</h3>
+            <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-section=orders]').click()">View All</button>
+          </div>
+          <div id="recentOrders" style="padding:1rem;">
+            <p style="color:var(--text-light);text-align:center;padding:2rem;">No orders yet. <a href="shop.html" style="color:var(--green-mid)">Visit our shop!</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appointments Section -->
+      <div class="dash-section" id="section-appointments">
+        <div class="dash-page-header flex-between" style="flex-wrap:wrap;gap:1rem;">
+          <div><h1>My Appointments</h1><p>Manage your upcoming and past appointments</p></div>
+          <a href="appointments.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book New</a>
+        </div>
+        <div class="data-table-wrap">
+          <div id="appointmentsTableWrap">
+            <p style="padding:2rem;text-align:center;color:var(--text-light)">No appointments found. <a href="appointments.html" style="color:var(--green-mid)">Book one now!</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Section -->
+      <div class="dash-section" id="section-orders">
+        <div class="dash-page-header"><h1>Order History</h1><p>View and track all your orders</p></div>
+        <div class="data-table-wrap">
+          <div id="ordersTableWrap">
+            <p style="padding:2rem;text-align:center;color:var(--text-light)">No orders yet. <a href="shop.html" style="color:var(--green-mid)">Shop now!</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Health Profile -->
+      <div class="dash-section" id="section-profile">
+        <div class="dash-page-header"><h1>Health Profile</h1><p>Your personal health information for Dr. He</p></div>
+        <div class="settings-section">
+          <h4><i class="fa-solid fa-file-medical"></i> Medical Information</h4>
+          <div class="form-group">
+            <label class="form-label">Medical History / Conditions</label>
+            <textarea id="profileHistory" class="form-control" rows="4" placeholder="List any diagnosed conditions, past surgeries, or chronic health issues..."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Current Medications</label>
+              <textarea id="profileMeds" class="form-control" rows="3" placeholder="List current medications and dosages..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Known Allergies</label>
+              <textarea id="profileAllergies" class="form-control" rows="3" placeholder="Medications, foods, environmental..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h4><i class="fa-solid fa-phone-volume"></i> Emergency Contact</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Contact Name</label>
+              <input type="text" id="profileEmergName" class="form-control" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Phone</label>
+              <input type="tel" id="profileEmergPhone" class="form-control" placeholder="(919) 555-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Relationship</label>
+            <select id="profileEmergRel" class="form-control">
+              <option>Spouse / Partner</option><option>Parent</option><option>Sibling</option><option>Friend</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="saveProfileBtn"><i class="fa-solid fa-floppy-disk"></i> Save Health Profile</button>
+      </div>
+
+      <!-- Settings -->
+      <div class="dash-section" id="section-settings">
+        <div class="dash-page-header"><h1>Account Settings</h1><p>Manage your account and preferences</p></div>
+        <div class="settings-section">
+          <h4><i class="fa-solid fa-user"></i> Personal Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" id="settingsFirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" id="settingsLastName" class="form-control" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="settingsEmail" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" id="settingsPhone" class="form-control" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="saveInfoBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        </div>
+        <div class="settings-section">
+          <h4><i class="fa-solid fa-lock"></i> Change Password</h4>
+          <div class="form-group">
+            <label class="form-label">Current Password</label>
+            <input type="password" id="currPass" class="form-control" placeholder="Enter current password" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">New Password</label>
+              <input type="password" id="newPass" class="form-control" placeholder="Min 8 chars, 1 uppercase, 1 number" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirm New Password</label>
+              <input type="password" id="confirmPass" class="form-control" placeholder="Repeat new password" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="changePassBtn"><i class="fa-solid fa-key"></i> Change Password</button>
+        </div>
+      </div>
+
+      <!-- Staff Schedule (superuser only) -->
+      <div class="dash-section" id="section-schedule">
+        <div class="dash-page-header"><h1>Staff Schedule</h1><p>View and manage clinic appointments</p></div>
+        <div class="data-table-wrap">
+          <div class="data-table-header"><h3>Today's Schedule</h3></div>
+          <p style="padding:2rem;text-align:center;color:var(--text-light)">No scheduled appointments today.</p>
+        </div>
+      </div>
+
+      <!-- Patient List (superuser only) -->
+      <div class="dash-section" id="section-patients">
+        <div class="dash-page-header"><h1>Patient List</h1><p>View registered patients (read-only)</p></div>
+        <div class="data-table-wrap" id="patientsTableWrap">
+          <p style="padding:2rem;text-align:center;color:var(--text-light)">Loading patient list...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const user = window.Auth ? Auth.getCurrentUser() : null;
+  if (!user) { window.location.href = 'login.html'; return; }
+
+  // Populate user info
+  const initials = (user.firstName?.[0] || '') + (user.lastName?.[0] || '') || user.email[0].toUpperCase();
+  ['sidebarAvatar','topbarAvatar'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = initials; });
+  const fullName = `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.email;
+  document.getElementById('sidebarName').textContent = fullName;
+  document.getElementById('sidebarRole').textContent = user.role;
+  document.getElementById('topbarName').textContent  = fullName.split(' ')[0];
+  document.getElementById('welcomeName').textContent = fullName.split(' ')[0];
+  const roleBadge = document.getElementById('topbarRole');
+  roleBadge.textContent = user.role;
+  roleBadge.className = `topbar-role-badge ${user.role}`;
+
+  // Show staff nav if superuser
+  if (user.role === 'superuser') {
+    document.getElementById('staffNavGroup').style.display = 'block';
+  }
+
+  // Stats
+  const orders = JSON.parse(localStorage.getItem('ptcm_orders') || '[]')
+    .filter(o => o.customer?.email === user.email);
+  document.getElementById('statOrders').textContent = orders.length;
+  document.getElementById('statCompleted').textContent = orders.filter(o => o.status === 'delivered').length;
+  document.getElementById('statMemberSince').textContent = user.createdAt
+    ? new Date(user.createdAt).getFullYear() : '2026';
+
+  // Orders table
+  if (orders.length > 0) {
+    const rows = orders.slice(-3).reverse().map(o =>
+      `<div style="display:flex;justify-content:space-between;padding:.6rem 1rem;border-bottom:1px solid var(--grey-50);font-size:.875rem">
+        <span><strong>#${o.id}</strong> — ${o.items?.length || 0} item(s)</span>
+        <span style="color:var(--text-light)">${new Date(o.date).toLocaleDateString()}</span>
+        <span class="status-badge ${o.status}">${o.status}</span>
+      </div>`).join('');
+    document.getElementById('recentOrders').innerHTML = rows;
+    document.getElementById('ordersTableWrap').innerHTML =
+      `<table class="data-table"><thead><tr><th>Order #</th><th>Date</th><th>Items</th><th>Status</th></tr></thead><tbody>` +
+      orders.reverse().map(o =>
+        `<tr><td><strong>#${o.id}</strong></td><td>${new Date(o.date).toLocaleDateString()}</td>
+        <td>${o.items?.map(i => i.name).join(', ') || '—'}</td>
+        <td><span class="status-badge ${o.status}">${o.status}</span></td></tr>`
+      ).join('') + `</tbody></table>`;
+  }
+
+  // Pre-fill settings
+  document.getElementById('settingsFirstName').value = user.firstName || '';
+  document.getElementById('settingsLastName').value  = user.lastName  || '';
+  document.getElementById('settingsEmail').value     = user.email     || '';
+  document.getElementById('settingsPhone').value     = user.phone     || '';
+
+  // Section switching
+  document.querySelectorAll('[data-section]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-section]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const name = btn.dataset.section;
+      document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(`section-${name}`)?.classList.add('active');
+      document.getElementById('topbarTitle').textContent = btn.textContent.trim();
+    });
+  });
+
+  // Sidebar toggle
+  document.getElementById('sidebarToggle').addEventListener('click', () => {
+    document.getElementById('dashSidebar').classList.toggle('collapsed');
+    document.getElementById('dashMain').classList.toggle('expanded');
+  });
+
+  // Mobile menu
+  document.getElementById('topbarMenuBtn').addEventListener('click', () => {
+    document.getElementById('dashSidebar').classList.toggle('mobile-open');
+    document.getElementById('sidebarOverlay').classList.toggle('visible');
+  });
+  document.getElementById('sidebarOverlay').addEventListener('click', () => {
+    document.getElementById('dashSidebar').classList.remove('mobile-open');
+    document.getElementById('sidebarOverlay').classList.remove('visible');
+  });
+
+  // Logout
+  const logoutHandler = () => { if (window.Auth) Auth.logout(); };
+  document.getElementById('dashLogoutBtn').addEventListener('click', logoutHandler);
+  document.getElementById('topbarLogout').addEventListener('click', logoutHandler);
+
+  // Save profile
+  document.getElementById('saveProfileBtn').addEventListener('click', () => {
+    if (window.Notify) Notify.success('Health profile saved successfully!');
+  });
+
+  // Save info
+  document.getElementById('saveInfoBtn').addEventListener('click', () => {
+    if (window.Notify) Notify.success('Account information updated!');
+  });
+
+  // Change password
+  document.getElementById('changePassBtn').addEventListener('click', () => {
+    const np = document.getElementById('newPass').value;
+    const cp = document.getElementById('confirmPass').value;
+    if (np !== cp) { if(window.Notify) Notify.error('Passwords do not match!'); return; }
+    if (np.length < 8) { if(window.Notify) Notify.error('Password must be at least 8 characters.'); return; }
+    if (window.Notify) Notify.success('Password changed successfully!');
+    document.getElementById('currPass').value = '';
+    document.getElementById('newPass').value = '';
+    document.getElementById('confirmPass').value = '';
+  });
+});
+</script>
+</body>
+</html>
