@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ping TCM – Acupuncture & Traditional Chinese Medicine Clinic in Durham, NC. Dr. Ping He provides expert acupuncture, herbal medicine, pain management, infertility treatment, and more." />
+  <meta property="og:title" content="Ping TCM – Acupuncture & Traditional Chinese Medicine" />
+  <meta property="og:description" content="Experience the healing power of Traditional Chinese Medicine in Durham, NC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pingtcm.com" />
+  <title>Ping TCM – Acupuncture & Traditional Chinese Medicine | Durham, NC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo">Ping <span>TCM</span></div>
+  <div class="spinner"></div>
+</div>
+
+<!-- Notifications -->
+<div class="notifications-container" id="notifications" aria-live="polite"></div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+      <span>Ping TCM<small>Traditional Chinese Medicine</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/treatments.html">Treatments</a>
+      <a href="pages/shop.html">Shop</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/appointments.html">Appointments</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="pages/cart.html" class="cart-btn" id="cartBtn" aria-label="Shopping cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartBadge"></span>
+      </a>
+      <div id="authNav">
+        <!-- Populated by auth.js -->
+        <a href="pages/login.html" class="btn btn-primary btn-sm">Sign In</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-text" data-animate>
+      <span class="hero-eyebrow"><i class="fa-solid fa-circle-dot"></i> Durham, NC &bull; Est. 2012</span>
+      <h1 class="hero-title">Healing Through <em>Ancient Wisdom</em></h1>
+      <p class="hero-subtitle">Experience the transformative power of Traditional Chinese Medicine at Ping TCM Clinic. Expert acupuncture, herbal medicine, and holistic care tailored to your wellbeing.</p>
+      <div class="hero-actions">
+        <a href="pages/appointments.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+        <a href="pages/treatments.html" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-stethoscope"></i> Explore Treatments</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><i class="fa-solid fa-shield-heart"></i> Licensed &amp; Certified</div>
+        <div class="hero-badge"><i class="fa-solid fa-star"></i> 5-Star Rated</div>
+        <div class="hero-badge"><i class="fa-solid fa-phone"></i> 919-491-8983</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="clinic-logo-large"><i class="fa-solid fa-leaf"></i></div>
+        <h3>Dr. Ping He, L.Ac.</h3>
+        <p>Diplomat in Oriental Medicine<br>NC Licensed Acupuncturist</p>
+        <div class="hero-stats-grid">
+          <div class="hero-stat"><strong>500+</strong><span>Patients</span></div>
+          <div class="hero-stat"><strong>15+</strong><span>Years Exp.</span></div>
+          <div class="hero-stat"><strong>16</strong><span>Treatments</span></div>
+          <div class="hero-stat"><strong>5★</strong><span>Rating</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" data-animate><strong>500+</strong><span>Happy Patients</span></div>
+      <div class="stat-item" data-animate><strong>15+</strong><span>Years of Experience</span></div>
+      <div class="stat-item" data-animate><strong>16</strong><span>Treatment Options</span></div>
+      <div class="stat-item" data-animate><strong>5★</strong><span>Google Rating</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Services Section -->
+<section class="section services-section">
+  <div class="container">
+    <div class="text-center" data-animate>
+      <span class="section-label">Our Specialties</span>
+      <h2 class="section-title">Comprehensive TCM Treatments</h2>
+      <p class="section-subtitle">From pain relief to fertility support, our evidence-based Traditional Chinese Medicine treatments address the root causes of your health concerns.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+        <h3>Acupuncture</h3>
+        <p>Our core treatment using sterile, single-use needles to stimulate specific points that restore energy flow, relieve pain, and promote natural healing.</p>
+        <a href="pages/treatments.html#acupuncture" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+        <h3>Pain Management</h3>
+        <p>Effective relief for chronic and acute pain conditions including back pain, arthritis, migraines, and fibromyalgia — without pharmaceuticals.</p>
+        <a href="pages/treatments.html#pain" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-baby"></i></div>
+        <h3>Infertility Support</h3>
+        <p>Comprehensive fertility programs for both men and women, integrating acupuncture and herbal medicine to support natural conception and IVF success.</p>
+        <a href="pages/treatments.html#infertility" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+        <h3>Allergy Treatment</h3>
+        <p>A unique NAET-inspired protocol that desensitizes your immune system to allergens, providing lasting relief from seasonal and year-round allergies.</p>
+        <a href="pages/treatments.html#allergy" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Depression &amp; Anxiety</h3>
+        <p>WHO-recognized acupuncture therapy for mood disorders. Naturally balances neurotransmitters to reduce depression, anxiety, and stress symptoms.</p>
+        <a href="pages/treatments.html#depression" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-battery-bolt"></i></div>
+        <h3>Low Energy &amp; Fatigue</h3>
+        <p>Specialized protocols for Chronic Fatigue Syndrome and general low energy, restoring vitality through acupuncture, herbs, and lifestyle guidance.</p>
+        <a href="pages/treatments.html#energy" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-weight-scale"></i></div>
+        <h3>Weight Loss</h3>
+        <p>A holistic TCM approach to sustainable weight management through appetite regulation, metabolism enhancement, and stress reduction.</p>
+        <a href="pages/treatments.html#weight" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fa-solid fa-lungs"></i></div>
+        <h3>Respiratory Health</h3>
+        <p>TCM therapies to improve breathing, reduce inflammation, and strengthen lung function for asthma, COPD, and chronic respiratory conditions.</p>
+        <a href="pages/treatments.html#respiratory" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a href="pages/treatments.html" class="btn btn-secondary btn-lg">View All 16 Treatments <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section featured-products">
+  <div class="container">
+    <div class="text-center" data-animate>
+      <span class="section-label">TCM Wellness Store</span>
+      <h2 class="section-title">Featured Products &amp; Packages</h2>
+      <p class="section-subtitle">Curated herbal products, wellness tools, and treatment packages to support your healing journey at home.</p>
+    </div>
+    <div class="products-preview-grid" id="featuredProducts">
+      <div class="product-preview-card" data-animate>
+        <div class="product-img">🌿<span class="product-badge">Popular</span></div>
+        <div class="product-body">
+          <div class="stars">★★★★★ <span>(42)</span></div>
+          <h4>Initial Consultation</h4>
+          <div class="price">$150.00</div>
+          <a href="pages/shop.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Add to Cart</a>
+        </div>
+      </div>
+      <div class="product-preview-card" data-animate>
+        <div class="product-img">🍵<span class="product-badge">New</span></div>
+        <div class="product-body">
+          <div class="stars">★★★★★ <span>(28)</span></div>
+          <h4>Energy Herbal Tea Blend</h4>
+          <div class="price">$28.00</div>
+          <a href="pages/shop.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Add to Cart</a>
+        </div>
+      </div>
+      <div class="product-preview-card" data-animate>
+        <div class="product-img">💆<span class="product-badge">Sale</span></div>
+        <div class="product-body">
+          <div class="stars">★★★★☆ <span>(19)</span></div>
+          <h4>Pain Management Package (5 Sessions)</h4>
+          <div class="price">$375.00</div>
+          <a href="pages/shop.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Add to Cart</a>
+        </div>
+      </div>
+      <div class="product-preview-card" data-animate>
+        <div class="product-img">🪨<span class="product-badge">Best Seller</span></div>
+        <div class="product-body">
+          <div class="stars">★★★★★ <span>(35)</span></div>
+          <h4>Gua Sha Stone Set</h4>
+          <div class="price">$22.00</div>
+          <a href="pages/shop.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a href="pages/shop.html" class="btn btn-secondary btn-lg"><i class="fa-solid fa-store"></i> Visit Our Full Shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Dr. Ping He -->
+<section class="section about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap" data-animate>
+        <div class="doctor-img-placeholder" style="padding:0;overflow:hidden;background:none;">
+          <img src="images/Dr.Ping-He-TCM.jpg"
+               alt="Dr. Ping He – Licensed Acupuncturist, Ping TCM Durham NC"
+               style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius-lg);" />
+          <div class="doctor-badge">
+            <strong>15+</strong><span>Years Experience</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content" data-animate>
+        <span class="section-label">Meet Your Doctor</span>
+        <h2 class="section-title">Dr. Ping He, L.Ac., Dipl. O.M.</h2>
+        <p>Dr. Ping He received his medical training from both China and the United States — graduating from the prestigious <strong>Beijing University of Traditional Chinese Medicine</strong> and completing advanced studies at <strong>Florida College of Integrative Medicine</strong>.</p>
+        <br />
+        <p>Nationally certified as a <strong>"Diplomat in Oriental Medicine"</strong> and fully licensed by the state of North Carolina, Dr. He brings decades of clinical expertise to every patient. Before coming to the US, he owned and operated TCM clinics in China and served as a physician assistant in the surgical department of the Tenth People's Hospital, Sichuan Province.</p>
+        <div class="credentials">
+          <span class="credential-tag"><i class="fa-solid fa-graduation-cap"></i> Beijing University of TCM</span>
+          <span class="credential-tag"><i class="fa-solid fa-graduation-cap"></i> Florida College of Integrative Medicine</span>
+          <span class="credential-tag"><i class="fa-solid fa-certificate"></i> Diplomat in Oriental Medicine</span>
+          <span class="credential-tag"><i class="fa-solid fa-id-badge"></i> NC State Licensed</span>
+          <span class="credential-tag"><i class="fa-solid fa-star"></i> NCCAOM Certified</span>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="pages/about.html" class="btn btn-secondary">Learn More About Dr. He</a>
+          <a href="pages/appointments.html" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="text-center" data-animate>
+      <span class="section-label">Patient Stories</span>
+      <h2 class="section-title">What Our Patients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-animate>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">After years of chronic back pain and failed conventional treatments, Dr. He's acupuncture changed my life. After just 6 sessions I was pain-free and sleeping through the night. I highly recommend Ping TCM to anyone seeking a natural, effective approach to pain management.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div><div class="author-name">Sarah M.</div><div class="author-label">Pain Management Patient</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-animate>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">My husband and I tried for 2 years to conceive. After 4 months of fertility acupuncture with Dr. He, I became pregnant naturally. He is kind, professional, and genuinely cares about his patients. We are forever grateful to Ping TCM.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JL</div>
+          <div><div class="author-name">Jennifer L.</div><div class="author-label">Infertility Treatment Patient</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-animate>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">I've struggled with seasonal allergies my whole life. The allergy treatment protocol at Ping TCM was unlike anything I'd tried. After completing the series, my allergy symptoms reduced by over 90%. The clinic is professional, clean, and welcoming.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RT</div>
+          <div><div class="author-name">Robert T.</div><div class="author-label">Allergy Treatment Patient</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <span class="section-label">Start Your Journey</span>
+    <h2>Ready to Begin Your Healing Journey?</h2>
+    <p>Take the first step toward better health. Book a consultation with Dr. Ping He today and discover how Traditional Chinese Medicine can transform your life.</p>
+    <div class="cta-actions">
+      <a href="pages/appointments.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+      <a href="pages/contact.html" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-phone"></i> Call 919-491-8983</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Strip -->
+<div class="contact-strip">
+  <div class="container">
+    <div class="contact-strip-grid">
+      <div class="contact-strip-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <strong>Address</strong>
+        <span>5322 NC Hwy 55, Suite 101<br>Durham, NC 27713</span>
+      </div>
+      <div class="contact-strip-item">
+        <i class="fa-solid fa-phone"></i>
+        <strong>Phone</strong>
+        <span><a href="tel:9194918983" style="color:inherit">919-491-8983</a></span>
+      </div>
+      <div class="contact-strip-item">
+        <i class="fa-solid fa-envelope"></i>
+        <strong>Email</strong>
+        <span><a href="mailto:info@pingtcm.com" style="color:inherit">info@pingtcm.com</a></span>
+      </div>
+      <div class="contact-strip-item">
+        <i class="fa-solid fa-clock"></i>
+        <strong>Hours</strong>
+        <span>Monday–Friday: 9am – 6pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><i class="fa-solid fa-seedling" style="color:var(--gold)"></i> Ping TCM</div>
+        <p>Providing the highest quality, safest, and most effective acupuncture and Traditional Chinese Medicine in the Raleigh-Durham area since 2012.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+          <a href="#" class="social-link" aria-label="Yelp"><i class="fa-brands fa-yelp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Treatments</h4>
+        <div class="footer-links">
+          <a href="pages/treatments.html">Acupuncture</a>
+          <a href="pages/treatments.html">Pain Management</a>
+          <a href="pages/treatments.html">Infertility</a>
+          <a href="pages/treatments.html">Allergy Treatment</a>
+          <a href="pages/treatments.html">Depression</a>
+          <a href="pages/treatments.html">Weight Loss</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="pages/about.html">About Us</a>
+          <a href="pages/shop.html">Shop</a>
+          <a href="pages/appointments.html">Book Appointment</a>
+          <a href="pages/contact.html">Contact</a>
+          <a href="pages/login.html">Patient Portal</a>
+          <a href="pages/register.html">New Patient</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-links">
+          <a href="tel:9194918983"><i class="fa-solid fa-phone fa-fw"></i> 919-491-8983</a>
+          <a href="mailto:info@pingtcm.com"><i class="fa-solid fa-envelope fa-fw"></i> info@pingtcm.com</a>
+          <a href="#"><i class="fa-solid fa-location-dot fa-fw"></i> 5322 NC Hwy 55, Suite 101<br>&nbsp;&nbsp;&nbsp;&nbsp;Durham, NC 27713</a>
+          <a href="#"><i class="fa-solid fa-clock fa-fw"></i> Mon–Fri: 9am – 6pm</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2012–2026 PingTCM.com. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>
